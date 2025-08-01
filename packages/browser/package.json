@@ -1,0 +1,31 @@
+{
+  "name": "@ojo/browser",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "types": "./build/index.d.ts",
+  "files": [
+    "build/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "lint": "eslint . --max-warnings 0",
+    "depcheck": "depcheck"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ojo/libs": "workspace:*",
+    "dotenv": "^16.4.5",
+    "playwright": "1.48.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.57",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

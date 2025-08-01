@@ -1,0 +1,3 @@
+{
+  "extends": "@ojo/typescript-config/base.json"
+}

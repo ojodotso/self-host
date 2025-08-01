@@ -1,0 +1,23 @@
+{
+  "name": "browser",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node build/server.js",
+    "test": "echo 'Add test script here'",
+    "lint": "eslint . --max-warnings 0",
+    "depcheck": "depcheck",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "playwright-core": "1.48.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "nodemon": "^3.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "ext": "js, ts, json",
+  "exec": "ts-node ./src/app.ts",
+  "legacyWatch": true
+}

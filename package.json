@@ -1,0 +1,23 @@
+{
+  "name": "ojo-selfhost",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "depcheck": "depcheck",
+    "check": "turbo check"
+  },
+  "devDependencies": {
+    "@ojo/eslint-config": "workspace:*",
+    "@ojo/typescript-config": "workspace:*",
+    "depcheck": "^1.4.7",
+    "prettier": "^3.3.3",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,58 @@
+# src/docs/pdf.docs.yaml
+tags:
+  - name: PDFs
+    description: Operations for generating PDFs from HTML.
+
+paths:
+  /v1/pdf:
+    post:
+      summary: Generate a PDF from HTML
+      description: Creates a PDF document from raw HTML content. PDF options can be controlled via request headers.
+      tags: [PDFs]
+      requestBody:
+        description: HTML content to be converted to a PDF.
+        required: true
+        content:
+          text/html:
+            schema:
+              type: string
+              example: "<html><body><h2>PDF Title</h2><p>This is a sample PDF.</p></body></html>"
+      parameters:
+        - in: header
+          name: ojo-pdf-format
+          schema:
+            type: string
+            default: A4
+          description: Paper format (e.g., A4, Letter).
+        - in: header
+          name: ojo-pdf-landscape
+          schema:
+            type: boolean
+            default: false
+          description: Whether to use landscape orientation.
+        - in: header
+          name: ojo-pdf-print-background
+          schema:
+            type: boolean
+            default: true
+          description: Whether to print background graphics.
+        - in: header
+          name: ojo-pdf-scale
+          schema:
+            type: number
+            default: 1
+          description: Scale of the webpage rendering.
+      responses:
+        "200":
+          description: PDF file generated successfully.
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        "422":
+          description: Invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"

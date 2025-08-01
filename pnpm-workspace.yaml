@@ -1,0 +1,9 @@
+packages:
+  - apps/*
+  - packages/*
+onlyBuiltDependencies:
+  - '@scarf/scarf'
+  - esbuild
+  - msgpackr-extract
+  - sharp
+  - unrs-resolver

@@ -1,0 +1,9 @@
+{
+  "extends": "@ojo/typescript-config/base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build"
+  },
+  "include": ["."],
+  "exclude": ["build", "node_modules"]
+}

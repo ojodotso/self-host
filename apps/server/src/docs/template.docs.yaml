@@ -1,0 +1,104 @@
+# src/docs/template.docs.yaml
+tags:
+  - name: Templates
+    description: Operations for creating and managing reusable image templates.
+
+paths:
+  /v1/template:
+    post:
+      summary: Create a new template
+      description: Creates a new image template from base64-encoded HTML.
+      tags: [Templates]
+      security:
+        - AdminAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [html]
+              properties:
+                html:
+                  type: string
+                  example: "PCFET0NUWVBFIGh0bWw+DQoNCjxodG1sIGxhbmc9ImVuIj4NCg0KPGhlYWQ+DQogIDxsaW5rIGhyZWY9Imh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzMj9mYW1pbHk9SW50ZXI6d2dodEAzMDA7NDAwOzUwMDs2MDA7NzAwJmRpc3BsYXk9c3dhcCIgcmVsPSJzdHlsZXNoZWV0IiAvPg0KICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG4udGFpbHdpbmRjc3MuY29tIj48L3NjcmlwdD4NCiAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vY2hhcnQuanMiPjwvc2NyaXB0Pg0KICA8c3R5bGU+DQogICAgYm9keSB7DQogICAgICBmb250LWZhbWlseTogIkludGVyIiwgc2Fucy1zZXJpZjsNCiAgICB9DQoNCiAgICAuZ3JhZGllbnQtdGV4dCB7DQogICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoOTBkZWcsICMzYjgyZjYsICM4YjVjZjYpOw0KICAgICAgLXdlYmtpdC1iYWNrZ3JvdW5kLWNsaXA6IHRleHQ7DQogICAgICAtd2Via2l0LXRleHQtZmlsbC1jb2xvcjogdHJhbnNwYXJlbnQ7DQogICAgfQ0KDQogICAgLmZlYXR1cmUtY2FyZCB7DQogICAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4zczsNCiAgICB9DQoNCiAgICAuY3VzdG9tLWdyYWRpZW50IHsNCiAgICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgxMzVkZWcsICM0ZjQ2ZTUsICM3YzNhZWQsICNkYjI3NzcpOw0KICAgIH0NCiAgPC9zdHlsZT4NCjwvaGVhZD4NCg0KPGJvZHkgY2xhc3M9ImN1c3RvbS1ncmFkaWVudCBtaW4taC1zY3JlZW4gZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgcC04Ij4NCiAgPGRpdiBjbGFzcz0iYmctd2hpdGUgYmctb3BhY2l0eS05NSBiYWNrZHJvcC1ibHVyLWxnIHJvdW5kZWQtMnhsIHNoYWRvdy0yeGwgcC04IG1heC13LTN4bCB3LWZ1bGwgIj4NCiAgICA8ZGl2IGNsYXNzPSJtYi04IHRleHQtY2VudGVyIj4NCiAgICAgIDxoMSBjbGFzcz0idGV4dC01eGwgZm9udC1ib2xkIG1iLTQiPldlbGNvbWUgdG8gPHNwYW4NCiAgICAgICAgICAgIGNsYXNzPSJncmFkaWVudC10ZXh0Ij5vSm88L3NwYW4+PC9oMT4NCiAgICAgIDxwIGNsYXNzPSJ0ZXh0LWJhc2UgdGV4dC1ncmF5LTYwMCI+Q29udmVydCBIVE1MIGludG8gc3R1bm5pbmcsIGR5bmFtaWMNCiAgICAgICAgaW1hZ2VzIGZvciBzb2NpYWwgbWVkaWEsIG1hcmtldGluZyAmIG1vcmU8L3A+DQogICAgPC9kaXY+DQogICAgPGRpdiBjbGFzcz0iZ3JpZCBtZDpncmlkLWNvbHMtMiBnYXAtNiBtYi04Ij4NCiAgICAgIDxkaXYgY2xhc3M9ImZlYXR1cmUtY2FyZCBiZy1ibHVlLTUwIHJvdW5kZWQteGwgcC02IHNoYWRvdy1tZCI+DQogICAgICAgIDxkaXYgY2xhc3M9ImZsZXggaXRlbXMtY2VudGVyIG1iLTQiPg0KICAgICAgICAgIDxzdmcgY2xhc3M9InctOCBoLTggdGV4dC1ibHVlLTUwMCBtci0zIiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI0IDI0Ij4NCiAgICAgICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIg0KICAgICAgICAgICAgICBkPSJNNCA1YTEgMSAwIDAxMS0xaDE0YTEgMSAwIDAxMSAxdjJhMSAxIDAgMDEtMSAxSDVhMSAxIDAgMDEtMS0xVjV6TTQgMTNhMSAxIDAgMDExLTFoNmExIDEgMCAwMTEgMXY2YTEgMSAwIDAxLTEgMUg1YTEgMSAwIDAxLTEtMXYtNnpNMTYgMTNhMSAxIDAgMDExLTFoMmExIDEgMCAwMTEgMXY2YTEgMSAwIDAxLTEgMWgtMmExIDEgMCAwMS0xLTF2LTZ6Ij4NCiAgICAgICAgICAgIDwvcGF0aD4NCiAgICAgICAgICA8L3N2Zz4NCiAgICAgICAgICA8aDIgY2xhc3M9InRleHQteGwgZm9udC1zZW1pYm9sZCB0ZXh0LWJsdWUtNzAwIj5DcmVhdGUgT25jZSwgVXNlDQogICAgICAgICAgICBGb3JldmVyPC9oMj4NCiAgICAgICAgPC9kaXY+DQogICAgICAgIDxwIGNsYXNzPSJ0ZXh0LWdyYXktNjAwIj5EZXNpZ24geW91ciB0ZW1wbGF0ZSB3aXRoIGR5bmFtaWMgdmFyaWFibGVzDQogICAgICAgICAgZm9yIGluZmluaXRlIHBvc3NpYmlsaXRpZXM8L3A+DQogICAgICA8L2Rpdj4NCiAgICAgIDxkaXYgY2xhc3M9ImZlYXR1cmUtY2FyZCBiZy1wdXJwbGUtNTAgcm91bmRlZC14bCBwLTYgc2hhZG93LW1kIj4NCiAgICAgICAgPGRpdiBjbGFzcz0iZmxleCBpdGVtcy1jZW50ZXIgbWItNCI+DQogICAgICAgICAgPHN2ZyBjbGFzcz0idy04IGgtOCB0ZXh0LXB1cnBsZS01MDAgbXItMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHZpZXdCb3g9IjAgMCAyNCAyNCI+DQogICAgICAgICAgICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiINCiAgICAgICAgICAgICAgZD0iTTcgMTZhNCA0IDAgMDEtLjg4LTcuOTAzQTUgNSAwIDExMTUuOSA2TDE2IDZhNSA1IDAgMDExIDkuOU0xNSAxM2wtMyAzbTAgMGwtMy0zbTMgM1Y4Ij4NCiAgICAgICAgICAgIDwvcGF0aD4NCiAgICAgICAgICA8L3N2Zz4NCiAgICAgICAgICA8aDIgY2xhc3M9InRleHQteGwgZm9udC1zZW1pYm9sZCB0ZXh0LXB1cnBsZS03MDAiPkxpZ2h0bmluZy1GYXN0IENETg0KICAgICAgICAgIDwvaDI+DQogICAgICAgIDwvZGl2Pg0KICAgICAgICA8cCBjbGFzcz0idGV4dC1ncmF5LTYwMCI+R2VuZXJhdGVkIGltYWdlcyBhdXRvbWF0aWNhbGx5IHN0b3JlZCAmDQogICAgICAgICAgc2VydmVkIHZpYSBnbG9iYWwgQ0ROPC9wPg0KICAgICAgPC9kaXY+DQogICAgPC9kaXY+DQogICAgPGRpdiBjbGFzcz0ibWItOCAiPg0KICAgICAgPGgyIGNsYXNzPSJ0ZXh0LXhsIGZvbnQtYmFzZSBtYi00IHRleHQtY2VudGVyIj5UcnkgT3VyIFdlYXRoZXINCiAgICAgICAgVGVtcGxhdGU8L2gyPg0KICAgICAgPGRpdiBjbGFzcz0iZmVhdHVyZS1jYXJkIGJnLWJsdWUtNTAgcm91bmRlZC14bCBwLTYgc2hhZG93LW1kIHJlbGF0aXZlIj4NCiAgICAgICAgPGRpdiBjbGFzcz0iZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIj4NCiAgICAgICAgICA8ZGl2Pg0KICAgICAgICAgICAgPGgyIGNsYXNzPSJ0ZXh0LTJ4bCBmb250LXNlbWlib2xkIj57e2NpdHlfbmFtZX19PC9oMj4NCiAgICAgICAgICAgIDxwIGNsYXNzPSJ0ZXh0LWdyYXktNTAwIj57e3dlYXRoZXJfZGVzY3JpcHRpb259fTwvcD4NCiAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgICA8ZGl2IGNsYXNzPSJ0ZXh0LXJpZ2h0Ij4NCiAgICAgICAgICAgIDxkaXYgY2xhc3M9InotMTAwIj4NCiAgICAgICAgICAgICAgPHAgY2xhc3M9InRleHQtMnhsIGZvbnQtYm9sZCBtci04Ij57e3RlbXBlcmF0dXJlfX3CsEM8L3A+DQogICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImFic29sdXRlIGgtWzRyZW1dIHRvcC0wIHJpZ2h0LTAgdy00OCBvcGFjaXR5LTc1Ij4NCiAgICAgICAgICAgICAgPGRpdg0KICAgICAgICAgICAgICAgIGNsYXNzPSJhYnNvbHV0ZSB0b3AtMCBsZWZ0LTAgaC1mdWxsIHctOCBiZy1ncmFkaWVudC10by1yIGZyb20tYmx1ZS01MCB2aWEtYmx1ZS01MCB0by10cmFuc3BhcmVudCBwb2ludGVyLWV2ZW50cy1ub25lIj4NCiAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAgIDxjYW52YXMgaWQ9InRlbXBlcmF0dXJlQ2hhcnQiPjwvY2FudmFzPg0KICAgICAgICAgICAgICA8ZGl2DQogICAgICAgICAgICAgICAgY2xhc3M9ImFic29sdXRlIHRvcC0wIHJpZ2h0LTAgaC1mdWxsIHctOCBiZy1ncmFkaWVudC10by1sIGZyb20tYmx1ZS01MCB2aWEtYmx1ZS01MCB0by10cmFuc3BhcmVudCBwb2ludGVyLWV2ZW50cy1ub25lIj4NCiAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgPC9kaXY+DQogICAgICAgIDxkaXYgY2xhc3M9Im10LTQgZ3JpZCBncmlkLWNvbHMtMyBnYXAtNCB0ZXh0LWNlbnRlciI+DQogICAgICAgICAgPGRpdj4NCiAgICAgICAgICAgIDxwIGNsYXNzPSJ0ZXh0LWdyYXktNTAwIj5IdW1pZGl0eTwvcD4NCiAgICAgICAgICAgIDxwIGNsYXNzPSJmb250LXNlbWlib2xkIj57e2h1bWlkaXR5fX0lPC9wPg0KICAgICAgICAgIDwvZGl2Pg0KICAgICAgICAgIDxkaXY+DQogICAgICAgICAgICA8cCBjbGFzcz0idGV4dC1ncmF5LTUwMCI+V2luZDwvcD4NCiAgICAgICAgICAgIDxwIGNsYXNzPSJmb250LXNlbWlib2xkIj57e3dpbmRfc3BlZWR9fSBrbS9oPC9wPg0KICAgICAgICAgIDwvZGl2Pg0KICAgICAgICAgIDxkaXY+DQogICAgICAgICAgICA8cCBjbGFzcz0idGV4dC1ncmF5LTUwMCI+VVYgSW5kZXg8L3A+DQogICAgICAgICAgICA8cCBjbGFzcz0iZm9udC1zZW1pYm9sZCI+e3t1dl9pbmRleH19PC9wPg0KICAgICAgICAgIDwvZGl2Pg0KICAgICAgICA8L2Rpdj4NCiAgICAgIDwvZGl2Pg0KICAgIDwvZGl2Pg0KICAgIDxkaXYgY2xhc3M9ImJnLWdyYXktMTAwIHJvdW5kZWQteGwgcC02Ij4NCiAgICAgIDxoMyBjbGFzcz0idGV4dC1sZyBmb250LXNlbWlib2xkIG1iLTIiPkhvdyBJdCBXb3JrczwvaDM+DQogICAgICA8b2wgY2xhc3M9Imxpc3QtZGVjaW1hbCBsaXN0LWluc2lkZSBzcGFjZS15LTIgdGV4dC1ncmF5LTcwMCI+DQogICAgICAgIDxsaT5EZXNpZ24geW91ciB0ZW1wbGF0ZSB3aXRoIEhUTUwsIENTUywgYW5kIGR5bmFtaWMgdmFyaWFibGVzPC9saT4NCiAgICAgICAgPGxpPlVzZSB2YXJpYWJsZXMgbGlrZSA8Y29kZQ0KICAgICAgICAgICAgICBjbGFzcz0iYmctZ3JheS0yMDAgcHgtMSByb3VuZGVkIj57e2NpdHlfbmFtZX19PC9jb2RlPiBmb3INCiAgICAgICAgICBkeW5hbWljIGNvbnRlbnQ8L2xpPg0KICAgICAgICA8bGk+Q2FsbCBvdXIgQVBJIHdpdGggZGlmZmVyZW50IHZhbHVlcyB0byBnZW5lcmF0ZSB1bmlxdWUgaW1hZ2VzPC9saT4NCiAgICAgICAgPGxpPkltYWdlcyBhcmUgYXV0b21hdGljYWxseSBzdG9yZWQgYW5kIHNlcnZlZCB2aWEgb3VyIGdsb2JhbCBDRE48L2xpPg0KICAgICAgPC9vbD4NCiAgICA8L2Rpdj4NCiAgPC9kaXY+DQogIDxzY3JpcHQ+DQogICAgY29uc3QgY3R4ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3RlbXBlcmF0dXJlQ2hhcnQnKS5nZXRDb250ZXh0KCcyZCcpOw0KICAgICAgbmV3IENoYXJ0KGN0eCwgew0KICAgICAgICB0eXBlOiAnbGluZScsDQogICAgICAgIGRhdGE6IHsNCiAgICAgICAgICBsYWJlbHM6IFsnMTIgQU0nLCAnMSBBTScsICcyIEFNJywgJzMgQU0nLCAnNCBBTScsICc1IEFNJywgJzYgQU0nLA0KICAgICAgICAgICAgJzcgQU0nLCAnOCBBTScsICc5IEFNJywgJzEwIEFNJywgJzExIEFNJywgJzEyIFBNJywgJzEgUE0nLA0KICAgICAgICAgICAgJzIgUE0nLCAnMyBQTScsICc0IFBNJywgJzUgUE0nLCAnNiBQTScsICc3IFBNJywgJzggUE0nLA0KICAgICAgICAgICAgJzkgUE0nLCAnMTAgUE0nLCAnMTEgUE0nDQogICAgICAgICAgXSwNCiAgICAgICAgICBkYXRhc2V0czogW3sNCiAgICAgICAgICAgIGxhYmVsOiAnVGVtcGVyYXR1cmUgKMKwQyknLA0KICAgICAgICAgICAgZGF0YTogW3t7dGVtcGVyYXR1cmVfY2hhcnRfZGF0YX19XSwNCiAgICAgICAgICAgIGZpbGw6IGZhbHNlLA0KICAgICAgICAgICAgdGVuc2lvbjogMC40LA0KICAgICAgICAgICAgcG9pbnRSYWRpdXM6IDAsDQogICAgICAgICAgICBwb2ludEhvdmVyUmFkaXVzOiAwDQogICAgICAgICAgfV0NCiAgICAgICAgfSwNCiAgICAgICAgb3B0aW9uczogew0KICAgICAgICAgIHJlc3BvbnNpdmU6IHRydWUsDQogICAgICAgICAgbWFpbnRhaW5Bc3BlY3RSYXRpbzogZmFsc2UsDQogICAgICAgICAgcGx1Z2luczogew0KICAgICAgICAgICAgbGVnZW5kOiB7DQogICAgICAgICAgICAgIGRpc3BsYXk6IGZhbHNlDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgdG9vbHRpcDogew0KICAgICAgICAgICAgICBlbmFibGVkOiBmYWxzZQ0KICAgICAgICAgICAgfQ0KICAgICAgICAgIH0sDQogICAgICAgICAgc2NhbGVzOiB7DQogICAgICAgICAgICB4OiB7DQogICAgICAgICAgICAgIGRpc3BsYXk6IGZhbHNlLA0KICAgICAgICAgICAgfSwNCiAgICAgICAgICAgIHk6IHsNCiAgICAgICAgICAgICAgZGlzcGxheTogZmFsc2UsDQogICAgICAgICAgICB9DQogICAgICAgICAgfQ0KICAgICAgICB9DQogICAgICB9KTsNCg0KICA8L3NjcmlwdD4NCjwvYm9keT4NCg0KPC9odG1sPg=="
+                  description: Base64 encoded HTML content.
+                variables:
+                  type: object
+                  example:
+                    {
+                      "city_name": "San Francisco",
+                      "weather_description": "Partly Cloudy",
+                      "temperature": 22,
+                      "humidity": 65,
+                      "wind_speed": 12,
+                      "uv_index": 6,
+                      "temperature_chart_data":
+                        [
+                          14,
+                          13,
+                          13,
+                          12,
+                          16,
+                          13,
+                          14,
+                          16,
+                          15,
+                          17,
+                          18,
+                          18,
+                          17,
+                          21,
+                          20,
+                          19,
+                          21,
+                          20,
+                          19,
+                          18,
+                          17,
+                          16,
+                          15,
+                          14,
+                        ],
+                    }
+                  additionalProperties:
+                    type: string
+      responses:
+        "200":
+          description: Template created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  message:
+                    type: string
+        "422":
+          description: Failed to process request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/template/{templateId}:
+    get:
+      summary: Get a template by ID
+      description: Retrieves a specific template, with its HTML content base64 encoded.
+      tags: [Templates]
+      parameters:
+        - name: templateId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Template details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Template"
+        "404":
+          description: Template not found.

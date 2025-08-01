@@ -1,0 +1,30 @@
+{
+  "name": "@ojo/database",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "types": "./build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "pnpm db:generate && copyfiles -u 3 \"./src/drizzle/migrations/**/*\" \"./build/drizzle/migrations\"",
+    "dev": "tsc -w",
+    "db:generate": "cd src && drizzle-kit generate",
+    "db:migrate": "tsx src/drizzle/migrate.ts",
+    "db:studio": "cd src && drizzle-kit studio"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.36.1",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@ojo/typescript-config": "workspace:*",
+    "@types/node": "^22.15.29",
+    "copyfiles": "^2.4.1",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.28.0",
+    "pg": "^8.13.1",
+    "tsx": "^4.7.1",
+    "typescript": "^5.5.3"
+  }
+}
