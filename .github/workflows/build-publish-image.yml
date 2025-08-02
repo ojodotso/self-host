@@ -186,15 +186,6 @@ jobs:
           echo "$CHANGELOG" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Create release assets
-        run: |
-          # Create a release-ready docker-compose file
-          cp docker-compose.yml docker-compose-release.yml
-
-          # Update image tags to use the specific version
-          sed -i "s|ghcr.io/${{ github.repository }}-server:latest|ghcr.io/${{ github.repository }}-server:${{ steps.version.outputs.FULL_VERSION }}|g" docker-compose-release.yml
-          sed -i "s|ghcr.io/${{ github.repository }}-browser:latest|ghcr.io/${{ github.repository }}-browser:${{ steps.version.outputs.FULL_VERSION }}|g" docker-compose-release.yml
-
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
