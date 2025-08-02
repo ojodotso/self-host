@@ -213,7 +213,7 @@ Make sure your bucket is publicly readable for image serving.
 ## 📚 Documentation
 
 - **API Documentation**: Visit `http://localhost:3011/docs` for interactive Swagger documentation
-- **Full Documentation**: [docs.ojo.so](https://ojo.so/docs)
+- **Full Documentation**: [ojo.so/docs](https://ojo.so/docs)
 - **Templates & Examples**: [ojo.so/templates](https://ojo.so/templates)
 
 ## 🛠️ Development
