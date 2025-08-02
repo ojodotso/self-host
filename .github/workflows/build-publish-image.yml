@@ -3,6 +3,16 @@ name: build-publish-image
 on:
   push:
     branches: ['main', 'development']
+    paths:
+      - 'apps/**'
+      - 'packages/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'tsconfig.json'
+      - 'turbo.json'
+      - 'docker-compose*.yml'
+      - '.github/workflows/build-publish-image.yml'
 
 env:
   REGISTRY: ghcr.io
@@ -24,6 +34,15 @@ jobs:
         with:
           fetch-depth: 0 # Fetch all history for git commands
 
+      - name: Determine environment
+        id: env
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
+          else
+            echo "ENVIRONMENT=development" >> $GITHUB_OUTPUT
+          fi
+
       - name: Generate version
         id: version
         run: |
@@ -39,9 +58,12 @@ jobs:
           SHA=$(git rev-parse --short HEAD)
           # Full version with SHA
           FULL_VERSION="${VERSION}-${SHA}"
+          # Date for tagging
+          DATE=$(date +%Y%m%d)
 
           echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
           echo "FULL_VERSION=${FULL_VERSION}" >> $GITHUB_OUTPUT
+          echo "DATE=${DATE}" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
