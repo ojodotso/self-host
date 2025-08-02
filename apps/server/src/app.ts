@@ -5,7 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import { app } from '@/server';
 import { specs } from '@/swagger';
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3011;
 
 app.use(
   '/api-docs',
