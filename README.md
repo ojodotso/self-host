@@ -4,7 +4,7 @@
 
 **Turn any HTML into stunning images with a single API call.**
 
-oJo (self-host version) is the open-source, self-hosted version of [oJo.so](https://ojo.so) - a powerful HTML-to-image API service. Perfect for developers, agencies, and organizations who need dynamic image generation with full control over their infrastructure.
+oJo (self-host version) is the open-source, self-hosted version of [ojo.so](https://ojo.so) - a powerful HTML-to-image API service. Perfect for developers, agencies, and organizations who need dynamic image generation with full control over their infrastructure.
 
 ## ✨ What is oJo?
 
@@ -254,11 +254,11 @@ docker-compose down   # Stop services
 4. Push to branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## 🔄 Upgrading from oJo.so
+## 🔄 Migrating from ojo.so
 
 If you're migrating from the hosted version:
 
-1. **Export your templates** from the oJo.so dashboard
+1. **Export your templates** from the ojo.so dashboard
 2. **Import templates** using the `/api/v1/templates` endpoint
 3. **Update API endpoints** in your applications
 4. **Configure S3 storage** for image hosting
@@ -267,17 +267,17 @@ If you're migrating from the hosted version:
 
 - **Issues**: [GitHub Issues](https://github.com/ojodotso/ojo-selfhost/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/ojodotso/ojo-selfhost/discussions)
-- **Commercial Support**: [ojo.so/contact](https://ojo.so/contact)
+- **Commercial Support**: [ojo.so/contact](mailto:hello@ojo.so)
 
 ## ⚖️ License
 
 This project is licensed under the **Sustainable Use License** - see the [LICENSE](LICENSE) file for details.
 
-**TL;DR**: Free for personal and internal business use. Commercial redistribution or SaaS offerings are not permitted. For commercial use cases, please use [oJo.so](https://ojo.so).
+**TL;DR**: Free for personal and internal business use. Commercial redistribution or SaaS offerings are not permitted. For commercial use cases, please use [ojo.so](https://ojo.so).
 
 ## 🚀 Need More Power?
 
-While oJo Self-Host is perfect for many use cases, consider upgrading to [oJo.so](https://ojo.so) for:
+While oJo Self-Host is perfect for many use cases, consider upgrading to [ojo.so](https://ojo.so) for:
 
 - ⚡ **Global CDN** with instant image delivery
 - 🔥 **Higher performance** with optimized infrastructure  
@@ -287,8 +287,4 @@ While oJo Self-Host is perfect for many use cases, consider upgrading to [oJo.so
 - 🎨 **Visual template editor** with drag-and-drop interface
 - 🔗 **Native integrations** with Zapier, Make.com, and n8n
 
-[**Start your free trial →**](https://ojo.so/login)
-
----
-
-Made with ❤️ by the [oJo](https://ojo.so) team
+[**Start your free trial →**](https://ojo.so)
