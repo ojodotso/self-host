@@ -22,6 +22,10 @@ app.get('/api-docs.json', (req, res) => {
   res.send(specs);
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
