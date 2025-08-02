@@ -115,3 +115,93 @@ jobs:
           build-args: |
             VERSION=${{ steps.version.outputs.VERSION }}
             ENVIRONMENT=${{ steps.env.outputs.ENVIRONMENT }}
+
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate version
+        id: version
+        run: |
+          # Major: Years since 2024 (0, 1, 2...)
+          MAJOR=$(($(date +%Y) - 2024))
+          # Minor: Month (1-12)
+          MINOR=$(date +%m)
+          # Patch: Day of month (1-31)
+          PATCH=$(date +%d)
+          # Create version string
+          VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          # Get short SHA
+          SHA=$(git rev-parse --short HEAD)
+          # Full version with SHA
+          FULL_VERSION="${VERSION}-${SHA}"
+
+          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+          echo "FULL_VERSION=${FULL_VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          else
+            COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          fi
+
+          # Create changelog
+          CHANGELOG="## Docker Images
+
+          - \`ghcr.io/${{ github.repository }}-server:${{ steps.version.outputs.FULL_VERSION }}\`
+          - \`ghcr.io/${{ github.repository }}-browser:${{ steps.version.outputs.FULL_VERSION }}\`
+
+          ## Changes
+
+          ${COMMITS}
+
+          ## Installation
+
+          \`\`\`bash
+          # Pull the latest images
+          docker pull ghcr.io/${{ github.repository }}-server:${{ steps.version.outputs.FULL_VERSION }}
+          docker pull ghcr.io/${{ github.repository }}-browser:${{ steps.version.outputs.FULL_VERSION }}
+
+          # Or use docker-compose with the release assets
+          wget https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.FULL_VERSION }}/docker-compose.yml
+          docker-compose up -d
+          \`\`\`"
+
+          # Save changelog to file and output
+          echo "$CHANGELOG" > changelog.md
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create release assets
+        run: |
+          # Create a release-ready docker-compose file
+          cp docker-compose.yml docker-compose-release.yml
+
+          # Update image tags to use the specific version
+          sed -i "s|ghcr.io/${{ github.repository }}-server:latest|ghcr.io/${{ github.repository }}-server:${{ steps.version.outputs.FULL_VERSION }}|g" docker-compose-release.yml
+          sed -i "s|ghcr.io/${{ github.repository }}-browser:latest|ghcr.io/${{ github.repository }}-browser:${{ steps.version.outputs.FULL_VERSION }}|g" docker-compose-release.yml
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.FULL_VERSION }}
+          name: ${{ steps.version.outputs.FULL_VERSION }}
+          body: ${{ steps.changelog.outputs.CHANGELOG }}
+          files: |
+            docker-compose-release.yml
+            docker-compose.yml
+          generate_release_notes: false
