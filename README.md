@@ -254,19 +254,9 @@ docker-compose down   # Stop services
 4. Push to branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## 🔄 Migrating from ojo.so
-
-If you're migrating from the hosted version:
-
-1. **Export your templates** from the ojo.so dashboard
-2. **Import templates** using the `/api/v1/templates` endpoint
-3. **Update API endpoints** in your applications
-4. **Configure S3 storage** for image hosting
-
 ## 🆘 Support & Community
 
 - **Issues**: [GitHub Issues](https://github.com/ojodotso/self-host/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ojodotso/self-host/discussions)
 - **Commercial Support**: [hello@ojo.so](mailto:hello@ojo.so)
 
 ## ⚖️ License
