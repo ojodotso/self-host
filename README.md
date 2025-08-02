@@ -34,8 +34,8 @@ oJo transforms HTML, CSS, and JavaScript into high-quality images programmatical
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/ojodotso/ojo-selfhost.git
-   cd ojo-selfhost
+   git clone https://github.com/ojodotso/self-host.git
+   cd self-host
    ```
 
 2. **Configure environment variables**
@@ -74,15 +74,15 @@ Your oJo instance will be available at `http://localhost:3011` 🎉
 1. **Clone and install dependencies**
 
    ```bash
-   git clone https://github.com/ojodotso/ojo-selfhost.git
-   cd ojo-selfhost
+   git clone https://github.com/ojodotso/self-host.git
+   cd self-host
    pnpm install
    ```
 
 2. **Set up the database**
 
    ```bash
-   docker-compose -f docker-compose-dev.yml up postgres -d
+   docker-compose -f docker-compose.yml up postgres -d
    ```
 
 3. **Configure environment variables**
@@ -221,7 +221,7 @@ Make sure your bucket is publicly readable for image serving.
 ### Project Structure
 
 ```text
-ojo-selfhost/
+ojo-self-host/
 ├── apps/
 │   ├── server/          # Express.js API server
 │   └── browser/         # Playwright browser service
@@ -265,9 +265,9 @@ If you're migrating from the hosted version:
 
 ## 🆘 Support & Community
 
-- **Issues**: [GitHub Issues](https://github.com/ojodotso/ojo-selfhost/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ojodotso/ojo-selfhost/discussions)
-- **Commercial Support**: [ojo.so/contact](mailto:hello@ojo.so)
+- **Issues**: [GitHub Issues](https://github.com/ojodotso/self-host/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ojodotso/self-host/discussions)
+- **Commercial Support**: [hello@ojo.so](mailto:hello@ojo.so)
 
 ## ⚖️ License
 
