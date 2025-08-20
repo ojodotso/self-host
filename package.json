@@ -1,6 +1,29 @@
 {
   "name": "ojo-selfhost",
   "private": true,
+  "description": "A powerful HTML-to-image API service. Perfect for developers, agencies, and organizations who need dynamic image generation with full control over their infrastructure.",
+  "keywords": [
+    "api",
+    "screenshot",
+    "automation",
+    "self-hosted",
+    "html-to-pdf",
+    "html-to-image"
+  ],
+  "homepage": "https://ojo.so",
+  "bugs": {
+    "url": "https://github.com/ojodotso/self-host/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ojodotso/self-host.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "oJo",
+    "email": "hello@ojo.so",
+    "url": "https://ojo.so"
+  },
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
