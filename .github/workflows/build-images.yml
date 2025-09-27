@@ -3,7 +3,7 @@ name: Build images and publish
 on:
   push:
     branches:
-      - "master"
+      - "main"
     paths:
       - "apps/**"
       - "packages/**"
