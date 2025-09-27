@@ -37,10 +37,15 @@
     "@ojo/typescript-config": "workspace:*",
     "depcheck": "^1.4.7",
     "prettier": "^3.3.3",
-    "turbo": "latest"
+    "turbo": "latest",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.6",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "semantic-release": "^24.2.9"
   },
   "packageManager": "pnpm@10.11.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }
