@@ -30,22 +30,30 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "depcheck": "depcheck",
-    "check": "turbo check"
+    "check": "turbo check",
+    "clean:sub": "rimraf --glob \"apps/**/node_modules\" \"packages/**/node_modules\" \"**/build\" \"**/.next\" \"**/.turbo\"",
+    "clean": "pnpm i rimraf -D --workspace-root && pnpm clean:sub && rimraf node_modules"
   },
   "devDependencies": {
     "@ojo/eslint-config": "workspace:*",
     "@ojo/typescript-config": "workspace:*",
-    "depcheck": "^1.4.7",
-    "prettier": "^3.3.3",
-    "turbo": "latest",
+    "rimraf": "6.0.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^11.0.6",
     "conventional-changelog-conventionalcommits": "^9.1.0",
-    "semantic-release": "^24.2.9"
+    "depcheck": "^1.4.7",
+    "prettier": "^3.6.2",
+    "semantic-release": "^24.2.9",
+    "turbo": "latest"
   },
   "packageManager": "pnpm@10.11.0",
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild": ">=0.25.0"
+    }
   }
 }
