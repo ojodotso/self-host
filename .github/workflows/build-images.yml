@@ -87,7 +87,7 @@ jobs:
           SHA=$(git rev-parse --short HEAD)
           echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
           echo "FULL_VERSION=${VERSION}-${SHA}" >> $GITHUB_OUTPUT
-          echo "ENVIRONMENT=${{ github.ref == 'refs/heads/master' && 'production' || 'development' }}" >> $GITHUB_OUTPUT
+          echo "ENVIRONMENT=${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}" >> $GITHUB_OUTPUT
           echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
